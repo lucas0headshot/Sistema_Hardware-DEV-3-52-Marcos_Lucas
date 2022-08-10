@@ -10,9 +10,6 @@ Coordinates=183,390,69,36
 [btn_deletar]
 Coordinates=94,390,79,36
 
-[Image_1]
-Coordinates=10,276,64,58
-
 [btn_salvar]
 Coordinates=10,390,74,36
 
@@ -103,4 +100,7 @@ Coordinates=641,210,91,36
 [txt_Peso]
 Coordinates=84,276,63,36
 Visible=True
+
+[Imagem]
+Coordinates=10,276,64,58
 
