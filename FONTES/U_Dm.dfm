@@ -28,6 +28,7 @@ object Dm: TDm
       FieldName = 'Produto_ID'
       Origin = 'Produto_ID'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object tb_produtoProduto_Nome: TStringField
       AutoGenerateValue = arDefault
@@ -112,6 +113,7 @@ object Dm: TDm
       FieldName = 'Produto_ID'
       Origin = 'Produto_ID'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object SQL_Con_ProdutoProduto_Nome: TStringField
       AutoGenerateValue = arDefault
@@ -175,7 +177,6 @@ object Dm: TDm
   end
   object Ds_Con_Produto: TDataSource
     DataSet = SQL_Con_Produto
-    OnDataChange = Ds_Con_ProdutoDataChange
     Left = 32
     Top = 160
   end

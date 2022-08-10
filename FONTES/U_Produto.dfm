@@ -2815,12 +2815,12 @@ object Frm_Produto: TFrm_Produto
     object tb_consulta: TTabSheet
       Caption = 'Consultar'
       ImageIndex = 1
-      object lb_msg: TLabel
+      object lb_resultado: TLabel
         Left = 16
-        Top = 447
-        Width = 51
+        Top = 272
+        Width = 48
         Height = 13
-        Caption = 'Mensagem'
+        Caption = 'Resultado'
         Visible = False
       end
       object lb_buscar: TLabel
@@ -2831,11 +2831,10 @@ object Frm_Produto: TFrm_Produto
         Caption = 'Buscas'
       end
       object DBGrid1: TDBGrid
-        Left = 0
-        Top = 466
-        Width = 1086
-        Height = 120
-        Align = alBottom
+        Left = -4
+        Top = 291
+        Width = 1093
+        Height = 294
         DataSource = Dm.Ds_Con_Produto
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
@@ -2847,36 +2846,43 @@ object Frm_Produto: TFrm_Produto
           item
             Expanded = False
             FieldName = 'Produto_ID'
+            Title.Caption = 'ID'
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'Produto_Nome'
+            Title.Caption = 'Nome'
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'Produto_Preco'
+            Title.Caption = 'Pre'#231'o'
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'Produto_Quantidade'
+            Title.Caption = 'Quantidade'
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'Produto_Codigo'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'Produto_Disponibilidade'
+            Title.Caption = 'C'#243'digo'
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'Produto_Peso'
+            Title.Caption = 'Peso'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'Produto_Data'
+            Title.Caption = 'Data'
             Visible = True
           end>
       end
@@ -2897,16 +2903,16 @@ object Frm_Produto: TFrm_Produto
         OnClick = rg_opcoesClick
       end
       object btn_buscarTudo: TButton
-        Left = 736
-        Top = 435
+        Left = 744
+        Top = 259
         Width = 75
         Height = 25
         Caption = 'Buscar Tudo'
         TabOrder = 2
       end
       object btn_pesquisar: TButton
-        Left = 856
-        Top = 435
+        Left = 864
+        Top = 259
         Width = 75
         Height = 25
         Caption = 'Pesquisar'
@@ -2914,8 +2920,8 @@ object Frm_Produto: TFrm_Produto
         OnClick = btn_pesquisarClick
       end
       object btn_imprimir: TButton
-        Left = 968
-        Top = 435
+        Left = 976
+        Top = 259
         Width = 75
         Height = 25
         Caption = 'Imprimir'
@@ -2928,7 +2934,7 @@ object Frm_Produto: TFrm_Produto
         Height = 21
         TabOrder = 5
       end
-      object Data: TDateTimePicker
+      object Data_Con: TDateTimePicker
         Left = 928
         Top = 59
         Width = 121

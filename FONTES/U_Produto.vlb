@@ -76,9 +76,6 @@ Coordinates=157,276,64,36
 [rg_opcoes]
 Coordinates=596,10,74,58
 
-[lb_msg]
-Coordinates=530,10,56,58
-
 [Dm.Ds_Con_Produto]
 Coordinates=113,445,136,36
 
@@ -103,4 +100,7 @@ Visible=True
 
 [Imagem]
 Coordinates=10,276,64,58
+
+[lb_resultado]
+Coordinates=530,10,56,58
 

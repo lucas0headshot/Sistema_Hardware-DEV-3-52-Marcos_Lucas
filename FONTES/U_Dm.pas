@@ -54,7 +54,6 @@ type
     StringField9: TStringField;
     DateField1: TDateField;
     procedure DataModuleCreate(Sender: TObject);
-    procedure Ds_Con_ProdutoDataChange(Sender: TObject; Field: TField);
   private
     { Private declarations }
   public

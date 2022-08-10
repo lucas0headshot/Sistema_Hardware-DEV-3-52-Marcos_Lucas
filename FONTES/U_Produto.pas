@@ -33,7 +33,7 @@ type
     MainMenu: TMainMenu;
     Sair1: TMenuItem;
     Voltar1: TMenuItem;
-    lb_msg: TLabel;
+    lb_resultado: TLabel;
     DBGrid1: TDBGrid;
     rg_opcoes: TRadioGroup;
     btn_buscarTudo: TButton;
@@ -43,7 +43,7 @@ type
     txt_data: TDBEdit;
     lb_buscar: TLabel;
     txt_buscar: TEdit;
-    Data: TDateTimePicker;
+    Data_Con: TDateTimePicker;
     procedure btn_salvarClick(Sender: TObject);
     procedure btn_inserirClick(Sender: TObject);
     procedure Sair1Click(Sender: TObject);
@@ -93,7 +93,7 @@ Procedure TFrm_Produto.FormCreate(Sender: TObject);
 
     txt_buscar.Visible:= false;
     lb_buscar.Visible:= false;
-    Data.Visible:= false;
+    Data_Con.Visible:= false;
 
     btn_imprimir.Enabled:= false;
     btn_pesquisar.Enabled:= false;
@@ -102,21 +102,21 @@ Procedure TFrm_Produto.FormCreate(Sender: TObject);
 Procedure TFrm_Produto.QuantidadeRegistros; //Quantidade de produtos registrados
   Begin
     if (Dm.SQL_Con_Produto.RecordCount = 0) then
-      lb_msg.Visible:= true;
-      lb_msg.Caption:= '';
-      lb_msg.Caption:= 'Nenhum produto encontrado!';
+      lb_resultado.Visible:= true;
+      lb_resultado.Caption:= '';
+      lb_resultado.Caption:= 'Nenhum produto encontrado!';
       btn_imprimir.Enabled:= false;
 
     if (Dm.SQL_Con_Produto.RecordCount = 1) then
-      lb_msg.Visible:= true;
-      lb_msg.Caption:= '';
-      lb_msg.Caption:= 'Produto encontrado!' + IntToStr(Dm.SQL_Con_Produto.RecordCount) + 'produto';
+      lb_resultado.Visible:= true;
+      lb_resultado.Caption:= '';
+      lb_resultado.Caption:= 'Produto encontrado!' + IntToStr(Dm.SQL_Con_Produto.RecordCount) + 'produto';
       btn_imprimir.Enabled:= true;
 
     if (Dm.SQL_Con_Produto.RecordCount > 1) then
-      lb_msg.Visible:= true;
-      lb_msg.Caption:= '';
-      lb_msg.Caption:= 'Produto encontrados!' + IntToStr(Dm.SQL_Con_Produto.RecordCount) + 'produtos';
+      lb_resultado.Visible:= true;
+      lb_resultado.Caption:= '';
+      lb_resultado.Caption:= 'Produto encontrados!' + IntToStr(Dm.SQL_Con_Produto.RecordCount) + 'produtos';
       btn_imprimir.Enabled:= true;
   End;
 
@@ -128,7 +128,7 @@ Procedure TFrm_Produto.rg_opcoesClick(Sender: TObject); //Consultar
           txt_buscar.Visible:= true;
           lb_buscar.Visible:= true;
           lb_buscar.Caption:= 'Digite o código do produto:';
-          Data.Visible:= false;
+          Data_Con.Visible:= false;
           txt_buscar.Clear;
           btn_pesquisar.Enabled:= true;
           txt_buscar.SetFocus;
@@ -139,7 +139,7 @@ Procedure TFrm_Produto.rg_opcoesClick(Sender: TObject); //Consultar
           txt_buscar.Visible:= true;
           lb_buscar.Visible:= true;
           lb_buscar.Caption:= 'Digite o nome do produto:';
-          Data.Visible:= false;
+          Data_Con.Visible:= false;
           txt_buscar.Clear;
           btn_pesquisar.Enabled:= true;
           txt_buscar.SetFocus;
@@ -149,7 +149,7 @@ Procedure TFrm_Produto.rg_opcoesClick(Sender: TObject); //Consultar
           txt_buscar.Visible:= true;
           lb_buscar.Visible:= true;
           lb_buscar.Caption:= 'Digite o peso do produto:';
-          Data.Visible:= false;
+          Data_Con.Visible:= false;
           txt_buscar.Clear;
           btn_pesquisar.Enabled:= true;
           txt_buscar.SetFocus;
@@ -159,7 +159,7 @@ Procedure TFrm_Produto.rg_opcoesClick(Sender: TObject); //Consultar
           txt_buscar.Visible:= true;
           lb_buscar.Visible:= true;
           lb_buscar.Caption:= 'Digite o preço do produto:';
-          Data.Visible:= false;
+          Data_Con.Visible:= false;
           txt_buscar.Clear;
           btn_pesquisar.Enabled:= true;
           txt_buscar.SetFocus;
@@ -169,7 +169,7 @@ Procedure TFrm_Produto.rg_opcoesClick(Sender: TObject); //Consultar
           txt_buscar.Visible:= false;
           lb_buscar.Visible:= true;
           lb_buscar.Caption:= 'Digite a data do produto:';
-          Data.Visible:= true;
+          Data_Con.Visible:= true;
           txt_buscar.Clear;
           btn_pesquisar.Enabled:= true;
           txt_buscar.SetFocus;
@@ -198,7 +198,7 @@ Procedure TFrm_Produto.Sair1Click(Sender: TObject); //Fecha o programa
 
 Procedure TFrm_Produto.Voltar1Click(Sender: TObject); //Volta para o formulário anterior(Principal)
   Begin
-    If (tb_consulta.TabVisible = true) then
+    If (tb_consulta.TabVisible = true) then //Se
       Begin
         PageControl.TabIndex:= 0;
         tb_consulta.TabVisible:= false;
@@ -270,10 +270,54 @@ Procedure TFrm_Produto.btn_inserirClick(Sender: TObject); //Inserir
 
 Procedure TFrm_Produto.btn_pesquisarClick(Sender: TObject);
   Begin
-    If (txt_buscar.Text = '') then
-      Showmessage('Digite algo para pesquisar!');
-      txt_buscar.SetFocus;
-      exit;
+    If (txt_buscar.Text = '') then //Se o buscar estiver vazio
+      Begin
+        Showmessage('Digite algo para pesquisar!');
+        txt_buscar.SetFocus;
+        exit;
+      End;
+
+    With Dm.SQL_Con_Produto do //Consultar
+      Begin
+        Close;
+        SQL.Clear;
+        SQL.Add('select * from produto');
+
+        Case (rg_opcoes.ItemIndex) of //Index do opções
+          0: //Por ID
+            Begin
+              SQL.Add('where Produto_ID =: codigo');
+              ParamByName('codigo').Value:= txt_buscar.Text;
+            End;
+
+          1: //Por nome
+            Begin
+              SQL.Add('where Produto_Nome like nome');
+              ParamByName('nome').Value:= '%' + txt_buscar.Text + '%';
+
+            End;
+
+          2: //Por peso
+            Begin
+              SQL.Add('where Produto_Peso =: peso');
+              ParamByName('peso').Value:= txt_buscar.Text;
+            End;
+
+          3: //Por preço
+            Begin
+              SQL.Add('where Produto_Preco =: preco');
+              ParamByName('preco').Value:= txt_buscar.Text;
+            End;
+
+          4: //Por data
+            Begin
+              SQL.Add('where Produto_Data =: data');
+              ParamByName('data').AsDate:= StrtoDate(formatdatetime('dd/mm/yyyy', Data_Con.Date));
+            End;
+
+        End;
+        Open
+      End;
   End;
 
 Procedure TFrm_Produto.btn_procurarClick(Sender: TObject); //Procurar
@@ -289,7 +333,7 @@ Procedure TFrm_Produto.btn_salvarClick(Sender: TObject); //Salvar
     ShowMessage('Salvo com sucesso');
   End;
 
-procedure TFrm_Produto.BuscarTudo;
+procedure TFrm_Produto.BuscarTudo;  //Buscar tudo
 begin
 
 end;
