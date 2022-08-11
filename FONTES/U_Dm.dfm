@@ -30,12 +30,6 @@ object Dm: TDm
       ProviderFlags = [pfInWhere, pfInKey]
       ReadOnly = True
     end
-    object tb_produtoProduto_Nome: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'Produto_Nome'
-      Origin = 'Produto_Nome'
-      Size = 100
-    end
     object tb_produtoProduto_Preco: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'Produto_Preco'
@@ -89,6 +83,12 @@ object Dm: TDm
       FieldName = 'Produto_Data'
       Origin = 'Produto_Data'
       EditMask = '!99/99/0000;1;_'
+    end
+    object tb_produtoProduto_Nome: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Produto_Nome'
+      Origin = 'Produto_Nome'
+      Size = 100
     end
   end
   object DataSource: TDataSource

@@ -2865,6 +2865,7 @@ object Frm_Produto: TFrm_Produto
             Expanded = False
             FieldName = 'Produto_Quantidade'
             Title.Caption = 'Quantidade'
+            Width = 64
             Visible = True
           end
           item
@@ -2927,13 +2928,6 @@ object Frm_Produto: TFrm_Produto
         Caption = 'Imprimir'
         TabOrder = 4
       end
-      object txt_buscar: TEdit
-        Left = 928
-        Top = 59
-        Width = 121
-        Height = 21
-        TabOrder = 5
-      end
       object Data_Con: TDateTimePicker
         Left = 928
         Top = 59
@@ -2941,6 +2935,14 @@ object Frm_Produto: TFrm_Produto
         Height = 21
         Date = 44782.000000000000000000
         Time = 0.940214594906137800
+        TabOrder = 5
+      end
+      object txt_buscar: TDBEdit
+        Left = 928
+        Top = 59
+        Width = 121
+        Height = 21
+        DataSource = Dm.Ds_Con_Produto
         TabOrder = 6
       end
     end

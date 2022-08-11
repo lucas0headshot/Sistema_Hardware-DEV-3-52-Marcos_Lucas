@@ -20,7 +20,6 @@ type
     SQL_Con_Produto: TFDQuery;
     Ds_Con_Produto: TDataSource;
     tb_produtoProduto_ID: TFDAutoIncField;
-    tb_produtoProduto_Nome: TStringField;
     tb_produtoProduto_Preco: TStringField;
     tb_produtoProduto_Descricao: TStringField;
     tb_produtoProduto_Especificacoes: TStringField;
@@ -53,6 +52,7 @@ type
     StringField8: TStringField;
     StringField9: TStringField;
     DateField1: TDateField;
+    tb_produtoProduto_Nome: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

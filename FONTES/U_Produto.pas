@@ -42,8 +42,8 @@ type
     txt_Peso: TDBEdit;
     txt_data: TDBEdit;
     lb_buscar: TLabel;
-    txt_buscar: TEdit;
     Data_Con: TDateTimePicker;
+    txt_buscar: TDBEdit;
     procedure btn_salvarClick(Sender: TObject);
     procedure btn_inserirClick(Sender: TObject);
     procedure Sair1Click(Sender: TObject);
