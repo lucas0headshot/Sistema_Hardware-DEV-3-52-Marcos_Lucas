@@ -98,8 +98,8 @@ object Dm: TDm
   end
   object Driver: TFDPhysMySQLDriverLink
     VendorLib = 
-      'C:\Users\lucas\OneDrive\'#193'rea de Trabalho\3-52\DEV\Sistema_Hardwa' +
-      're-DEV-3-52-Marcos_Lucas\LIB\libmySQL.dll'
+      'C:\3-52\Marcos e Lucas Ronchi\Sistema_Hardware\Sistema_Hardware-' +
+      'DEV-3-52-Marcos_Lucas\LIB\libmySQL.dll'
     Left = 8
     Top = 112
   end
@@ -113,7 +113,6 @@ object Dm: TDm
       FieldName = 'Produto_ID'
       Origin = 'Produto_ID'
       ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
     end
     object SQL_Con_ProdutoProduto_Nome: TStringField
       AutoGenerateValue = arDefault

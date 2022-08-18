@@ -125,54 +125,54 @@ Procedure TFrm_Produto.rg_opcoesClick(Sender: TObject); //Consultar
     Case rg_opcoes.ItemIndex of
       0: //Por código
         Begin
-          txt_buscar.Visible:= true;
-          lb_buscar.Visible:= true;
-          lb_buscar.Caption:= 'Digite o código do produto:';
-          Data_Con.Visible:= false;
+          //txt_buscar.Visible:= true;
+          //lb_buscar.Visible:= true;
+          //lb_buscar.Caption:= 'Digite o código do produto:';
+          //Data_Con.Visible:= false;
           txt_buscar.Clear;
           btn_pesquisar.Enabled:= true;
-          txt_buscar.SetFocus;
+          //txt_buscar.SetFocus;
         End;
 
       1: //Por nome
         Begin
-          txt_buscar.Visible:= true;
-          lb_buscar.Visible:= true;
-          lb_buscar.Caption:= 'Digite o nome do produto:';
-          Data_Con.Visible:= false;
+          //txt_buscar.Visible:= true;
+          //lb_buscar.Visible:= true;
+          //lb_buscar.Caption:= 'Digite o nome do produto:';
+          //Data_Con.Visible:= false;
           txt_buscar.Clear;
           btn_pesquisar.Enabled:= true;
-          txt_buscar.SetFocus;
+          //txt_buscar.SetFocus;
         End;
       2: //Por peso
         Begin
-          txt_buscar.Visible:= true;
-          lb_buscar.Visible:= true;
-          lb_buscar.Caption:= 'Digite o peso do produto:';
-          Data_Con.Visible:= false;
+          //txt_buscar.Visible:= true;
+          //lb_buscar.Visible:= true;
+          //lb_buscar.Caption:= 'Digite o peso do produto:';
+          //Data_Con.Visible:= false;
           txt_buscar.Clear;
           btn_pesquisar.Enabled:= true;
-          txt_buscar.SetFocus;
+          //txt_buscar.SetFocus;
         End;
       3: //Por preço
         Begin
-          txt_buscar.Visible:= true;
-          lb_buscar.Visible:= true;
+          //txt_buscar.Visible:= true;
+          //lb_buscar.Visible:= true;
           lb_buscar.Caption:= 'Digite o preço do produto:';
-          Data_Con.Visible:= false;
-          txt_buscar.Clear;
+          //Data_Con.Visible:= false;
+          //txt_buscar.Clear;
           btn_pesquisar.Enabled:= true;
-          txt_buscar.SetFocus;
+          //txt_buscar.SetFocus;
         End;
       4: //Por data
         Begin
-          txt_buscar.Visible:= false;
-          lb_buscar.Visible:= true;
-          lb_buscar.Caption:= 'Digite a data do produto:';
-          Data_Con.Visible:= true;
+          //txt_buscar.Visible:= false;
+          //lb_buscar.Visible:= true;
+          //lb_buscar.Caption:= 'Digite a data do produto:';
+          //Data_Con.Visible:= true;
           txt_buscar.Clear;
           btn_pesquisar.Enabled:= true;
-          txt_buscar.SetFocus;
+          //txt_buscar.SetFocus;
         End;
 
     End;

@@ -2829,6 +2829,7 @@ object Frm_Produto: TFrm_Produto
         Width = 33
         Height = 13
         Caption = 'Buscas'
+        Visible = False
       end
       object DBGrid1: TDBGrid
         Left = -4
@@ -2913,7 +2914,7 @@ object Frm_Produto: TFrm_Produto
       end
       object btn_pesquisar: TButton
         Left = 864
-        Top = 259
+        Top = 260
         Width = 75
         Height = 25
         Caption = 'Pesquisar'
@@ -2936,6 +2937,7 @@ object Frm_Produto: TFrm_Produto
         Date = 44782.000000000000000000
         Time = 0.940214594906137800
         TabOrder = 5
+        Visible = False
       end
       object txt_buscar: TDBEdit
         Left = 928
@@ -2944,6 +2946,7 @@ object Frm_Produto: TFrm_Produto
         Height = 21
         DataSource = Dm.Ds_Con_Produto
         TabOrder = 6
+        Visible = False
       end
     end
   end

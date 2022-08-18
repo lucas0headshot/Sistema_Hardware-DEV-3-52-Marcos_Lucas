@@ -27212,10 +27212,8 @@ object Frm_Principal: TFrm_Principal
       FAD8FE9604892984A10A94E6AF07A323909112D185DE1D8DFF0F1C11DFD625BE
       491B0000000049454E44AE426082}
     Visible = False
-    ExplicitLeft = 496
-    ExplicitTop = 280
-    ExplicitWidth = 105
-    ExplicitHeight = 105
+    ExplicitLeft = 32
+    ExplicitTop = 52
   end
   object Panel: TPanel
     Left = 0

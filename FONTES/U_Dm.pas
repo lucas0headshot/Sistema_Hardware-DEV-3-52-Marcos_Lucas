@@ -29,17 +29,6 @@ type
     tb_produtoProduto_Disponibilidade: TStringField;
     tb_produtoProduto_Peso: TStringField;
     tb_produtoProduto_Data: TDateField;
-    SQL_Con_ProdutoProduto_ID: TFDAutoIncField;
-    SQL_Con_ProdutoProduto_Nome: TStringField;
-    SQL_Con_ProdutoProduto_Preco: TStringField;
-    SQL_Con_ProdutoProduto_Descricao: TStringField;
-    SQL_Con_ProdutoProduto_Especificacoes: TStringField;
-    SQL_Con_ProdutoProduto_Quantidade: TStringField;
-    SQL_Con_ProdutoProduto_Codigo: TStringField;
-    SQL_Con_ProdutoProduto_Caracteristicas: TStringField;
-    SQL_Con_ProdutoProduto_Disponibilidade: TStringField;
-    SQL_Con_ProdutoProduto_Peso: TStringField;
-    SQL_Con_ProdutoProduto_Data: TDateField;
     SQL_Imprimir_Produto: TFDQuery;
     FDAutoIncField1: TFDAutoIncField;
     StringField1: TStringField;
@@ -53,6 +42,17 @@ type
     StringField9: TStringField;
     DateField1: TDateField;
     tb_produtoProduto_Nome: TStringField;
+    SQL_Con_ProdutoProduto_ID: TFDAutoIncField;
+    SQL_Con_ProdutoProduto_Nome: TStringField;
+    SQL_Con_ProdutoProduto_Preco: TStringField;
+    SQL_Con_ProdutoProduto_Descricao: TStringField;
+    SQL_Con_ProdutoProduto_Especificacoes: TStringField;
+    SQL_Con_ProdutoProduto_Quantidade: TStringField;
+    SQL_Con_ProdutoProduto_Codigo: TStringField;
+    SQL_Con_ProdutoProduto_Caracteristicas: TStringField;
+    SQL_Con_ProdutoProduto_Disponibilidade: TStringField;
+    SQL_Con_ProdutoProduto_Peso: TStringField;
+    SQL_Con_ProdutoProduto_Data: TDateField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
