@@ -44,6 +44,7 @@ type
     lb_buscar: TLabel;
     Data_Con: TDateTimePicker;
     txt_buscar: TDBEdit;
+    txt_impressao: TEdit;
     procedure btn_salvarClick(Sender: TObject);
     procedure btn_inserirClick(Sender: TObject);
     procedure Sair1Click(Sender: TObject);
@@ -55,6 +56,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure btn_procurarClick(Sender: TObject);
     procedure btn_pesquisarClick(Sender: TObject);
+    procedure txt_impressaoChange(Sender: TObject);
+    procedure DBGrid1CellClick(Column: TColumn);
   private
     procedure QuantidadeRegistros;
     procedure ConfigBotoes;
@@ -83,7 +86,28 @@ Procedure TFrm_Produto.ConfigBotoes; //Configura os botões
 
   End;
 
-Procedure TFrm_Produto.FormCreate(Sender: TObject);
+procedure TFrm_Produto.DBGrid1CellClick(Column: TColumn);
+begin
+  with dm.sql_imprimir_produto do
+  begin
+   close;
+   sql.clear;
+   if txt_impressao.text = '' then
+   begin
+     sql.add ('Select * from produto');
+   end
+   else
+   begin
+     sql.add('Select * from produto where Produto_ID = :codigo');
+     ParamByName('codigo').Value := StrToInt(txt_impressao.text);
+   end;
+   open;
+   dm.report_produto.LoadFromFile(GetCurrentDir + '\rel\relatorio.fr3');
+   dm.report_produto.ShowReport();
+  end;
+end;
+
+procedure TFrm_Produto.FormCreate(Sender: TObject);
   Begin
     PageControl.TabIndex:= 0;
     tb_consulta.TabVisible:= false;
@@ -125,54 +149,54 @@ Procedure TFrm_Produto.rg_opcoesClick(Sender: TObject); //Consultar
     Case rg_opcoes.ItemIndex of
       0: //Por código
         Begin
-          //txt_buscar.Visible:= true;
-          //lb_buscar.Visible:= true;
-          //lb_buscar.Caption:= 'Digite o código do produto:';
-          //Data_Con.Visible:= false;
+          txt_buscar.Visible:= true;
+          lb_buscar.Visible:= true;
+          lb_buscar.Caption:= 'Digite o código do produto:';
+          Data_Con.Visible:= false;
           txt_buscar.Clear;
           btn_pesquisar.Enabled:= true;
-          //txt_buscar.SetFocus;
+          txt_buscar.SetFocus;
         End;
 
       1: //Por nome
         Begin
-          //txt_buscar.Visible:= true;
-          //lb_buscar.Visible:= true;
-          //lb_buscar.Caption:= 'Digite o nome do produto:';
-          //Data_Con.Visible:= false;
+          txt_buscar.Visible:= true;
+          lb_buscar.Visible:= true;
+          lb_buscar.Caption:= 'Digite o nome do produto:';
+          Data_Con.Visible:= false;
           txt_buscar.Clear;
           btn_pesquisar.Enabled:= true;
-          //txt_buscar.SetFocus;
+          txt_buscar.SetFocus;
         End;
       2: //Por peso
         Begin
-          //txt_buscar.Visible:= true;
-          //lb_buscar.Visible:= true;
-          //lb_buscar.Caption:= 'Digite o peso do produto:';
-          //Data_Con.Visible:= false;
+          txt_buscar.Visible:= true;
+          lb_buscar.Visible:= true;
+          lb_buscar.Caption:= 'Digite o peso do produto:';
+          Data_Con.Visible:= false;
           txt_buscar.Clear;
           btn_pesquisar.Enabled:= true;
-          //txt_buscar.SetFocus;
+          txt_buscar.SetFocus;
         End;
       3: //Por preço
         Begin
-          //txt_buscar.Visible:= true;
-          //lb_buscar.Visible:= true;
+          txt_buscar.Visible:= true;
+          lb_buscar.Visible:= true;
           lb_buscar.Caption:= 'Digite o preço do produto:';
-          //Data_Con.Visible:= false;
-          //txt_buscar.Clear;
+          Data_Con.Visible:= false;
+          txt_buscar.Clear;
           btn_pesquisar.Enabled:= true;
-          //txt_buscar.SetFocus;
+          txt_buscar.SetFocus;
         End;
       4: //Por data
         Begin
-          //txt_buscar.Visible:= false;
-          //lb_buscar.Visible:= true;
-          //lb_buscar.Caption:= 'Digite a data do produto:';
-          //Data_Con.Visible:= true;
+          txt_buscar.Visible:= false;
+          lb_buscar.Visible:= true;
+          lb_buscar.Caption:= 'Digite a data do produto:';
+          Data_Con.Visible:= true;
           txt_buscar.Clear;
           btn_pesquisar.Enabled:= true;
-          //txt_buscar.SetFocus;
+          txt_buscar.SetFocus;
         End;
 
     End;
@@ -196,7 +220,13 @@ Procedure TFrm_Produto.Sair1Click(Sender: TObject); //Fecha o programa
       Frm_Produto.Close;
   End;
 
-Procedure TFrm_Produto.Voltar1Click(Sender: TObject); //Volta para o formulário anterior(Principal)
+Procedure TFrm_Produto.txt_impressaoChange(Sender: TObject);
+begin
+txt_impressao.Text := IntToStr(dm.SQL_Con_ProdutoProduto_ID.Value);
+btn_imprimir.Enabled:=true;
+end;
+
+procedure TFrm_Produto.Voltar1Click(Sender: TObject); //Volta para o formulário anterior(Principal)
   Begin
     If (tb_consulta.TabVisible = true) then //Se
       Begin

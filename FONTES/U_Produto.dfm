@@ -2,7 +2,7 @@ object Frm_Produto: TFrm_Produto
   Left = 0
   Top = 0
   BorderStyle = bsSingle
-  Caption = 'Produto'
+  Caption = 'a'
   ClientHeight = 614
   ClientWidth = 1094
   Color = clBtnFace
@@ -2843,6 +2843,7 @@ object Frm_Produto: TFrm_Produto
         TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
+        OnCellClick = DBGrid1CellClick
         Columns = <
           item
             Expanded = False
@@ -2947,6 +2948,14 @@ object Frm_Produto: TFrm_Produto
         DataSource = Dm.Ds_Con_Produto
         TabOrder = 6
         Visible = False
+      end
+      object txt_impressao: TEdit
+        Left = 560
+        Top = 264
+        Width = 121
+        Height = 21
+        TabOrder = 7
+        OnChange = txt_impressaoChange
       end
     end
   end

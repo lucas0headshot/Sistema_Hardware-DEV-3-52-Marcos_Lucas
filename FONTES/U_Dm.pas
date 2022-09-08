@@ -8,7 +8,7 @@ uses
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait,
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
   FireDAC.Phys.MySQLDef, FireDAC.Phys.MySQL, Data.DB, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, FireDAC.Comp.UI;
+  FireDAC.Comp.Client, FireDAC.Comp.UI, frxClass, frxDBSet;
 
 type
   TDm = class(TDataModule)
@@ -53,6 +53,9 @@ type
     SQL_Con_ProdutoProduto_Disponibilidade: TStringField;
     SQL_Con_ProdutoProduto_Peso: TStringField;
     SQL_Con_ProdutoProduto_Data: TDateField;
+    ds_rel_produto: TfrxDBDataset;
+    report_produto: TfrxReport;
+    sql_imprimir_produtos: TFDQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
